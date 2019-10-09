@@ -1,0 +1,59 @@
+xlsx_package = Axlsx::Package.new
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Places") do |sheet|
+  sheet.add_row [
+    'Id',
+    'Name',
+    'Short description',
+    'Long description',
+    'Latitude',
+    'Longitude',
+    'Main category',
+    'Object category',
+    'Object subcategory',
+    'Country',
+    'Region',
+    'Author',
+    'Created',
+    'Modified',
+    'Video',
+    'Address',
+    'Social media'
+  ]
+  @places.each do |place|
+    videos = place.videos.empty? ? nil : place.videos.pluck(:link)
+    addresses = []
+    if !place.addresses.empty?
+      place.addresses.each do |address|
+        address = address.as_json.except("id", "addressable_type", "addressable_id", "created_at", "updated_at")
+        address = address.reject{|k, v| v.blank? }
+        address = address.deep_symbolize_keys
+        addresses.push(address)
+      end
+    else
+      addresses = nil
+    end
+    
+    social = place.identities.empty? ? nil : place.identities.pluck(:provider, :link)
+    
+    sheet.add_row [
+      place.id, 
+      place.name,
+      place.short_desc,
+      place.long_desc,
+      place.latitude,
+      place.longitude,
+      place.main_category.parent.parent.name,
+      place.main_category.parent.name,
+      place.main_category.name,
+      place.region.country.name,
+      place.region.name,
+      place.user.first_name + " " + place.user.last_name,
+      place.created_at,
+      place.updated_at,
+      videos,
+      addresses,
+      social
+      ]
+  end
+end

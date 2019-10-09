@@ -1,0 +1,14 @@
+en:
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: 'Welcome to Eurovelo10! Your account has been created'
+      reset_password_instructions:
+        subject: 'Your password has been reset'
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "cannot be blank"

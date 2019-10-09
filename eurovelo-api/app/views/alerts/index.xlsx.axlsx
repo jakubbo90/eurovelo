@@ -1,0 +1,38 @@
+xlsx_package = Axlsx::Package.new
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Alerts") do |sheet|
+sheet.add_row [
+  'Id',
+  'Name',
+  'Description',
+  'Country',
+  'Region',
+  'Author',
+  'Created',
+  'Modified',
+  'Time from',
+  'Time to',
+  'Longitude',
+  'Latitude',
+  'Cities'
+]
+@alerts.each do |alert|
+  addresses = alert.addresses.empty? ? nil : alert.addresses.pluck(:city)
+  
+  sheet.add_row [
+    alert.id, 
+    alert.name,
+    alert.description,
+    alert.region.country.name,
+    alert.region.name,
+    alert.user.first_name + " " + alert.user.last_name,
+    alert.created_at,
+    alert.updated_at,
+    alert.time_from,
+    alert.time_to,
+    alert.longitude,
+    alert.latitude,
+    addresses
+    ]
+  end
+end

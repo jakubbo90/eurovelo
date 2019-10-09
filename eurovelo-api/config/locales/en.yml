@@ -1,0 +1,65 @@
+en:
+  activerecord:
+    attributes:
+      place:
+        name: "Name"
+        short_desc: "Short description"
+        long_desc: "Long description"
+        user_id: "User"
+        region_id: "Region"
+        category_id: "Category"
+        author: "Author"
+        longitude: "Longitude"
+        latitude: "Latitude"
+      trail:
+        name: "Name"
+        short_desc: "Short description"
+        long_desc: "Long description"
+        user_id: "User"
+        region_id: "Region"
+        category_id: "Category"
+        author: "Author"
+        distance: "Distance"
+      alert:
+        name: "Name"
+        description: "Description"
+        user_id: "User"
+        region_id: "Region"
+        author: "Author"
+        longitude: "Longitude"
+        latitude: "Latitude"
+        time_from: "Time from"
+        time_to: "Time_to"
+      address:
+        street: "Street"
+        street_number: "Street number"
+        city: "City"
+        postcode: "Postcode"
+        phone: "Phone"
+        cellphone: "Cellphone"
+        email: "Email"
+        link: "Link"
+      category_descriptions:
+        user_id: "User"
+        title: "Title"
+        short_desc: "Short description"
+        long_desc: "Long description"
+      identities:
+        link: "Link"
+        provider: "Provider"
+        place_id: "Object"
+      password_expirations:
+        expiration_date: "Expiration date"
+        period_in_days: "Period"
+      region:
+        name: "Name"
+        country_id: "Country"
+      user:
+        first_name: "First name"
+        last_name: "Last name"
+        phone: "Phone"
+        email: "Email"
+        company: "Company"
+        role: "Role"
+        region_id: "Region"
+        parent_id: "Parent"

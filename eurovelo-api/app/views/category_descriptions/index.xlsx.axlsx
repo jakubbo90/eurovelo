@@ -1,0 +1,29 @@
+xlsx_package = Axlsx::Package.new
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Descriptions") do |sheet|
+  sheet.add_row [
+    'Id',
+    'Name',
+    'Title',
+    'Short description',
+    'Long description',
+    'User',
+    'Created',
+    'Modified',
+    'Videos'
+  ]
+  @category_descriptions.each do |category_description|
+    videos = category_description.videos.empty? ? nil : category_description.videos.pluck(:link)
+    sheet.add_row [
+      category_description.id, 
+      category_description.name,
+      category_description.title,
+      category_description.short_desc,
+      category_description.long_desc,
+      category_description.user.first_name + " " + category_description.user.last_name,
+      category_description.created_at,
+      category_description.updated_at,
+      videos
+      ]
+  end
+end

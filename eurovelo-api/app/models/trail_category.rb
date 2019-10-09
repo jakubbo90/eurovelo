@@ -1,0 +1,2 @@
+class TrailCategory < Category
+end
