@@ -31,7 +31,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 # Securely configure Rails application with
 gem "figaro"
 # Upload files with
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 5.2.0"
 # Authenticate with
 gem 'devise_token_auth'
 # Authorize with
